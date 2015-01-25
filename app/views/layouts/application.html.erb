@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app='thumbnailer'>
+<head>
+  <title>LinkThumbnailerDemo</title>
+  <meta property="og:title" content="LinkThumbnailer" />
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="http://link-thumbnailer-demo.herokuapp.com/" />
+  <meta property="og:description" content="Ruby gem that generates thumbnail images from a given URL. Much like popular social website with link preview." />
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div class='site-wrapper'>
+  <div class="site-wrapper-inner">
+    <div class="cover-container">
+
+      <div class="masthead clearfix">
+        <div class="inner">
+          <h3 class="masthead-brand">LinkThumbnailer</h3>
+          <nav>
+            <ul class="nav masthead-nav">
+              <li class="active"><a href="#">Home</a></li>
+              <!-- <li><a href="#">Api</a></li> -->
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+      <div ng-view class="inner cover">
+        <%= yield %>
+      </div>
+
+      <div class="mastfoot">
+        <div class="inner">
+          <p>From Paris with <i class="fa fa-heart-o"></i>, by <a href="https://github.com/gottfrois" target="blank">@gottfrois</a>.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

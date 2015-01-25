@@ -1,0 +1,39 @@
+<h1 class="cover-heading">Give it a try!</h1>
+<p class="lead">
+  Ruby gem that generates thumbnail images from a given URL. Much like popular social website with link preview.
+</p>
+
+<form ng-submit="submit()">
+  <p class="lead">
+    <input type="text" class="form-control input-lg" value="https://github.com/gottfrois" ng-model="url">
+  </p>
+  <p class="lead">
+    <button type="submit" class="btn btn-primary btn-lg">Go!</button>
+  </p>
+</form>
+
+<div class="row">
+
+  <div class="col-md-6">
+    <carousel interval="myInterval">
+      <slide ng-repeat="image in images">
+        <img ng-src="{{ image.src }}" style="margin:auto;">
+        <div class="carousel-caption" ng-if="display_caption(image)">
+          <h5>{{ image.type }}</h5>
+          <p>{{ image.size[0] }}x{{ image.size[1] }}</p>
+        </div>
+      </slide>
+      <slide ng-repeat="video in videos">
+        <div ng-bind-html="html_safe(video.embed_code)"></div>
+      </slide>
+    </carousel>
+  </div>
+
+  <div class="col-md-6">
+    <h3 style="margin-top: 0px; text-align: left;">
+      {{ title }}
+      <img ng-src="{{ favicon }}" ng-if="favicon" width="16" height="16">
+    </h3>
+    <p class="lead" style="text-align: left;">{{ description }}</p>
+  </div>
+</div>
