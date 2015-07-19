@@ -13,5 +13,3 @@ gem 'jquery-rails'
 gem 'sass-rails', '~> 5.0'
 gem 'twitter-bootstrap-rails'
 gem 'font-awesome-rails'
-
-gem 'link_thumbnailer'
