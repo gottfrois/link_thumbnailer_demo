@@ -1,4 +1,4 @@
-@thumbnailer.controller 'ThumbnailsCtrl', ['$scope', '$sce', 'Thumbnail', ($scope, $sce, Thumbnail) ->
+@thumbnailer.controller 'ThumbnailsCtrl', ['$scope', '$http', '$sce', ($scope, $http, $sce) ->
 
   $scope.url    = "https://www.youtube.com/watch?v=0XFudmaObLI"
   $scope.images = []
@@ -11,14 +11,17 @@
     $sce.trustAsHtml(html)
 
   $scope.submit = ->
-    on_success = (response)->
-      $scope.title       = response.title
-      $scope.favicon     = response.favicon
-      $scope.description = response.description
-      $scope.images      = response.images
-      $scope.videos      = response.videos
-
-    on_error = ->
-
-    Thumbnail.new(url: $scope.url, on_success, on_error)
+    $http.jsonp(
+      $sce.trustAsResourceUrl("https://link-thumbnailer-api.herokuapp.com/thumbnails/new"),
+      params:
+        url: $scope.url
+    )
+    .then (response)->
+      $scope.title       = response.data.title
+      $scope.favicon     = response.data.favicon
+      $scope.description = response.data.description
+      $scope.images      = response.data.images
+      $scope.videos      = response.data.videos
+    .catch (error)->
+      console.log error
 ]
