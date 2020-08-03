@@ -11,8 +11,9 @@
     $sce.trustAsHtml(html)
 
   $scope.submit = ->
-    $http.jsonp(
-      $sce.trustAsResourceUrl("https://link-thumbnailer-api.herokuapp.com/thumbnails/new"),
+    $http.post(
+      $sce.trustAsResourceUrl("https://link-thumbnailer-demo.herokuapp.com/thumbnails/"),
+      "",
       params:
         url: $scope.url
     )
