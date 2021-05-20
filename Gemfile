@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails',                    '~> 4.2'
-gem 'puma',                     '~> 3.4'
+gem 'puma',                     '~> 4.3'
 gem 'rails_12factor'
 gem 'responders',               '~> 2.0'
 
